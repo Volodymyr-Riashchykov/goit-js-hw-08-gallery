@@ -121,19 +121,21 @@ function onKeyPress(e) {
             break;
         
          case 39:
-            closeModal();
             let neighborRightEl = currentImg.closest('.gallery__item').nextElementSibling;
             if(neighborRightEl === null){neighborRightEl = galleryEl.firstElementChild;}
             const nextImg = neighborRightEl.querySelector('img');
-            openModal(nextImg)
+            currentImg = nextImg;
+            lightboxImageEl.attributes['src'].value = nextImg.dataset.source;
+            lightboxImageEl.attributes['alt'].value = nextImg.attributes['alt'].value;
             break;
         
         case 37:
-            closeModal();
             let neighborLeftEl = currentImg.closest('.gallery__item').previousElementSibling;
             if(neighborLeftEl === null){neighborLeftEl = galleryEl.lastElementChild;}
             const prevImg = neighborLeftEl.querySelector('img');
-            openModal(prevImg)
+            currentImg = prevImg;
+            lightboxImageEl.attributes['src'].value = prevImg.dataset.source;
+            lightboxImageEl.attributes['alt'].value = prevImg.attributes['alt'].value;
             break;
         
         default:
